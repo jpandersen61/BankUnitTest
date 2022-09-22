@@ -27,7 +27,7 @@ namespace BankUnitTest
         #region Methods
         public void Deposit(double amount)
         {
-            throw new NotImplementedException();           
+            _balance += amount;
         }
 
         public void Withdraw(double amount)
