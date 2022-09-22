@@ -32,7 +32,11 @@ namespace BankUnitTest
 
         public void Withdraw(double amount)
         {
-            throw new NotImplementedException();
+            if (amount < 0)
+            {
+                throw new ArgumentOutOfRangeException("Amount negative");
+            }
+            _balance -= amount;
         }
         #endregion
     }
