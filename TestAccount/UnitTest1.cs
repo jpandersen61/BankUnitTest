@@ -90,5 +90,26 @@ namespace TestAccount
                 //OK, if we reach here -> Expected exception caught -> Test passed
             }
         }
+
+        [TestMethod]
+        public void TestCreditMax()
+        {
+            BankAccount ba = new BankAccount();
+            ba.Credit = 1000;
+            
+            double currentBalance = ba.Balance;
+            try
+            {
+                //We try to withdraw current balance plus -> Test should fail
+                ba.Withdraw(currentBalance + ba.Credit + 1);
+
+                //If we reach the test has failed
+                Assert.Fail("Did NOT catch exception -> credit max. excceeded");
+            }
+            catch (NegativeBalanceException e)
+            {
+                //OK, if we reach here -> Expected exception caught -> Test passed
+            }
+        }
     }
 }
